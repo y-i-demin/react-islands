@@ -11,6 +11,21 @@ function appendItemToCache(item, cache) {
     }
 }
 
+function shallowEqual(val1, val2) {
+    if (val1 === val2) {
+        return true;
+    }
+    if (val1.length !== val2.length) {
+        return false;
+    }
+    for (let i = 0; i < val1.length; i++) {
+        if (val1[i] !== val2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +52,7 @@ class Menu extends Component {
     componentWillMount() {
         //  Если мы как-то поменяли value (внутри _validValue),
         //  то нужно сообщить про это наверх.
-        if (this.props.value !== this.state.value) {
+        if (!shallowEqual(this.state.value, this.props.value)) {
             this.props.onChange(this.state.value, this.props);
         }
     }
