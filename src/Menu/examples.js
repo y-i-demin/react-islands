@@ -110,7 +110,7 @@ function Example() {
                 <div className="example">
                     <h3>menu with links</h3>
                     <Menu size="l">
-                        <Item url="//github.com" target="_blank">github</Item>
+                        <Item url="//github.com" target="_blank">github (target="_blank")</Item>
                         <Item url="//bitbucket.org">bitbucket</Item>
                     </Menu>
                 </div>
