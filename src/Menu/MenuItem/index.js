@@ -8,6 +8,7 @@ class MenuItem extends Component {
         this.onClick = this.onClick.bind(this);
         this.onMouseEnter = this.onMouseEnter.bind(this);
         this.onMouseLeave = this.onMouseLeave.bind(this);
+        this.renderLink = this.renderLink.bind(this);
     }
 
     render() {
@@ -18,11 +19,28 @@ class MenuItem extends Component {
                 onMouseEnter={this.onMouseEnter}
                 onMouseLeave={this.onMouseLeave}
             >
-                {this.props.children}
+                {this.props.url ? this.renderLink() : this.props.children}
             </div>
         );
     }
 
+
+    renderLink() {
+        const props = this.props;
+        const linkAttributes = {
+            href: props.url,
+        };
+
+        if (props.target) {
+            linkAttributes.target = props.target;
+        }
+
+        return (
+            <a className="link" {...linkAttributes}>
+                {props.children}
+            </a>
+        );
+    }
     className() {
         let className = 'menu-item';
 

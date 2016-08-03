@@ -244,22 +244,27 @@ class Menu extends Component {
         const checkable = Boolean(mode);
         const hovered = index === hoveredIndex;
         const key = `menuitem${props.id || index}`;
+        const options = {
+            theme,
+            size,
+            disabled,
+            hovered,
+            checked: checkable && (value.indexOf(props.value) !== -1),
+            ref: hovered ? 'focusedMenuItem' : null,
+            key,
+            index,
+            ...props,
+            onClick: this.onItemClick,
+            onHover: this.onItemHover,
+        };
+
+        if (props.url) {
+            options.type = 'link';
+        }
 
         return React.createElement(
             MenuItem,
-            {
-                theme,
-                size,
-                disabled,
-                hovered,
-                checked: checkable && (value.indexOf(props.value) !== -1),
-                ref: hovered ? 'focusedMenuItem' : null,
-                key,
-                index,
-                ...props,
-                onClick: this.onItemClick,
-                onHover: this.onItemHover,
-            }
+            options
         );
     }
 

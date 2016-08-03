@@ -107,6 +107,13 @@ function Example() {
                     </Menu>
                 </div>
 
+                <div className="example">
+                    <h3>menu with links</h3>
+                    <Menu size="l">
+                        <Item url="//github.com" target="_blank">github</Item>
+                        <Item url="//bitbucket.org">bitbucket</Item>
+                    </Menu>
+                </div>
             </div>
         </App>
     );
